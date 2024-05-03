@@ -1,4 +1,7 @@
-{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/glitch.css') }}">
+{% endblock %}
 {% block title %}{% endblock %}
 {% block body %}
 {% if app.user %}
@@ -6,5 +9,7 @@
 You are logged in as {{ app.user.nom }}, <a href="{{ path('app_logout') }}">Logout</a>
 </div>
 {% endif %}
-<h1>Welcome to my WebSite !</h1>
+
+   <p class="glitch">Welcome to my website</p>
+
 {% endblock %}
