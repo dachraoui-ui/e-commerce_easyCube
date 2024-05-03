@@ -10,6 +10,10 @@ You are logged in as {{ app.user.nom }}, <a href="{{ path('app_logout') }}">Logo
 </div>
 {% endif %}
 
-   <p class="glitch">Welcome to my website</p>
+   <p class="glitch">
+   <span aria-hidden="true">Welcome to my website</span>
+   Welcome to my website
+   <span aria-hidden="true">Welcome to my website</span></p>
+   
 
 {% endblock %}
