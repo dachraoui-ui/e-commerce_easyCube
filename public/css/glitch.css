@@ -1,5 +1,5 @@
 body {
-  background: #222;
+   background: linear-gradient(to top, #222, #333, #222);
   min-height: 100vh;
   display: grid;
   place-items: center;
