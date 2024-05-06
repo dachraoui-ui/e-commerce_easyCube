@@ -9,10 +9,13 @@
         body {
             background-color: #000;
             color: #fff;
+            padding: 0;
+            position: relative;
         }
         .form-control {
             background-color: #fff;
             color: #000;
+           
         }
         .btn-primary {
             background-color: #fff;
@@ -20,12 +23,18 @@
             border-color: #fff;
         }
 		  .container {
+            padding:0;
 			position:relative;
 			top:10%;
 			opacity:0.9;
 			height:80vh;
 			background: linear-gradient(to right, #002, #003, #002);
+            border-radius: 500px;
 		  }
+          .col-md-6{
+            position:absolute;
+            top:10%;
+          }
 		  
     </style>
 {% endblock %}
