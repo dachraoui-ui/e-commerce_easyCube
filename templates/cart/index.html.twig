@@ -1,0 +1,62 @@
+
+{% block title %}Votre panier{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, black, #333);
+            color: white;
+        }
+        .table {
+            color: white;
+            border: 1px solid white;
+        }
+        .table th {
+            border-top: 1px solid white;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h1 class="my-4">Votre panier</h1>
+    <hr>
+    {% if items | length %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>---</td>
+            <td>{{ item.quantity }}</td>
+            <td>---</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td>---</td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>
+    {% else %}
+    <div class="alert alert-light" role="alert">
+        Panier vide !
+    </div>
+    {% endif %}
+    <hr>
+    <p><a href="/" class="btn btn-light">Home</a></p>
+</div>
+{% endblock %}
