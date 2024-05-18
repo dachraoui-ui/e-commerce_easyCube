@@ -1,8 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau Produit!{% endblock %}
+{% block title %}Manage Products{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        .product:hover img {
+            transform: scale(1.1);
+        }
+        .product .actions {
+            margin-top: 10px;
+        }
+        .product .actions a {
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-<div class="example-wrapper">
-{{ form(form) }}
+<div class="container">
+    <h1>Manage Products</h1>
+    <a href="{{ path('app_produit_add') }}" class="btn btn-primary mb-3">Add New Product</a>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product">
+            <img src="/images/{{ product.photo }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>Price: {{ product.price }}</p>
+            <p>Made in: {{ product.madein }}</p>
+            <div class="actions">
+                <a href="{{ path('app_produit_edit', {'id': product.id}) }}" class="btn btn-warning">Edit</a>
+                <a href="{{ path('app_produit_delete', {'id': product.id}) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
+

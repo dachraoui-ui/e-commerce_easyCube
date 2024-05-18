@@ -23,6 +23,7 @@ class ProduitType extends AbstractType
         ->add('production_date', DateType::class)
         ->add('made_in', CountryType::class)
         ->add('photo', FileType::class,
+        
         ['constraints'=> new File(['mimeTypes'=>['image/jpeg',
         'image/jpg',
         'image/png',
