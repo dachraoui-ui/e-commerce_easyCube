@@ -80,7 +80,7 @@
                     <h2>{{ article.name }}</h2>
                     <div>Price: {{ article.price }}€</div>
                     <div>Made in: {{ article.madein }}</div>
-                    <button class="btn"><a href="{{ path('app_add', {'id': article.id}) }}">Add to Cart</a></button>
+                    <button class="btn"><a href="{{ path('cart_add', {'id': article.id}) }}">Add to Cart</a></button>
                 </div>
             </div>
         {% endfor %}

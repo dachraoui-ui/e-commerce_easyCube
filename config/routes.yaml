@@ -9,6 +9,9 @@ index:
 cart:
     path: /cart
     controller: App\Controller\CartController::index
-app_add:
+cart_add:
     path: /add/{id}
     controller: App\Controller\CartController::add
+cart_remove:
+    path: /remove/{id}
+    controller: App\Controller\CartController::remove

@@ -1,61 +1,92 @@
 {% extends 'base.html.twig' %}
 {% block title %}Votre panier{% endblock %}
 {% block stylesheets %}
+    {{ parent() }}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-    {{ parent() }}
     .navbar {
-        border-bottom: 2px solid white;
+        border-bottom: 2px solid orange;
         position: fixed;
         top: 0;
         font-size: 1.2em;
     }
-        body {
-            background: linear-gradient(to right, black, #333);
-            color: white;
-        }
-        .table {
-            color: white;
-            border: 1px solid white;
-        }
-        .table th {
-            border-top: 1px solid white;
-        }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .table {
+        color: black;
+        border: 1px solid black;
+    }
+    .table th, .table td {
+        vertical-align: middle;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+        background-color: #ff6600;
+        border: 1px solid #ff6600;
+        padding: 10px 20px;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .btn:hover {
+        background-color: #ff4500;
+    }
+    .btn-light {
+        background-color: #fff;
+        color: #333;
+    }
     </style>
 {% endblock %}
 {% block body %}
 <div class="container">
-    <h1 class="my-4">Votre panier</h1>
+    <h1 class="my-4 text-center"> Your Cart</h1>
     <hr>
     {% if items | length %}
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Add</th>
+                <th>Remove</th>
+            </tr>
         </thead>
         <tbody>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{item.name}}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{item.price}}</td>
-        </tr>
-        {% endfor %}
+            {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }} €</td>
+                <td>
+                    <a href="{{ path('cart_add', {'id': item.id}) }}" class="btn">+</a>
+                </td>
+                <td>
+                    <a href="{{ path('cart_remove', {'id': item.id}) }}" class="btn">-</a>
+                </td>
+            </tr>
+            {% endfor %}
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">Total:</td>
-            <td>---</td>
-            <td></td>
-        </tr>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td>{{ total }} €</td>
+                <td></td>
+                <td></td>
+            </tr>
         </tfoot>
     </table>
     {% else %}
@@ -64,6 +95,8 @@
     </div>
     {% endif %}
     <hr>
-    <p><a href="/" class="btn btn-light">Home</a></p>
+    <p class="text-center"><a href="/" class="btn btn-light">Home</a></p>
+    <p class="text-center"><a href="/affiche/produit" class="btn btn-light">add Products</a></p>
+    
 </div>
 {% endblock %}
