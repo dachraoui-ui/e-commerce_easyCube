@@ -18,7 +18,8 @@ class CartController extends AbstractController
         foreach ($panier as $id => $quantity) {
             $panierData[] = [
                 'id' => $id,
-                'quantity' => $quantity
+                'quantity' => $quantity,
+                
             ];
         }
         return $this->render('cart/index.html.twig', ['items' => $panierData]);
@@ -35,5 +36,18 @@ class CartController extends AbstractController
         $session->set('panier', $panier);
         return $this->redirectToRoute('cart');
     }
+    public function remove($id, Request $request)
+    {
+        $session = $request->getSession();
+        $panier = $session->get('panier', []);
+        if (!empty($panier[$id]))
+            $panier[$id]--;
+        if ($panier[$id] <= 0)
+            unset($panier[$id]);
+
+        $session->set('panier', $panier);
+        return $this->redirectToRoute('cart');
+    }
+
     
 }

@@ -37,8 +37,8 @@ security:
     access_control:
         - { path: '^/login', roles: PUBLIC_ACCESS }
         - { path: '^/register', roles: PUBLIC_ACCESS }
-        - { path: ^/index, roles: ROLE_USER }
-        - { path: ^/cart, roles: ROLE_USER }
+        - { path: '^/index', roles: ROLE_USER }
+        - { path: '^/cart', roles: ROLE_USER }
         
 
 

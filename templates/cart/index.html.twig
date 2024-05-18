@@ -1,8 +1,15 @@
-
+{% extends 'base.html.twig' %}
 {% block title %}Votre panier{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+    {{ parent() }}
+    .navbar {
+        border-bottom: 2px solid white;
+        position: fixed;
+        top: 0;
+        font-size: 1.2em;
+    }
         body {
             background: linear-gradient(to right, black, #333);
             color: white;
@@ -28,18 +35,18 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Nom</th>
-            <th>Quantité</th>
-            <th>Prix</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
         {% for item in items %}
         <tr>
             <td>{{ item.id }}</td>
-            <td>---</td>
+            <td>{{item.name}}</td>
             <td>{{ item.quantity }}</td>
-            <td>---</td>
+            <td>{{item.price}}</td>
         </tr>
         {% endfor %}
         </tbody>

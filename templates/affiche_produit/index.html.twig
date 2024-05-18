@@ -1,14 +1,89 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Liste des Produits!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    h1{
+      text-align: center;
+    }
+    button a{
+      text-decoration: none;
+    }
+         .example-wrapper {
+               margin-top: 50px;
+         }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            background-color: #333;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s;
+        }
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+        .product-card-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .product-card h2 {
+            font-size: 1.5em;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .product-card div {
+            margin-bottom: 5px;
+        }
+        .product-card .btn {
+            background-color: blue;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product-card .btn:hover {
+            background-color: #ff4500;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 <div class="example-wrapper">
-<h1>Liste des produits</h1>
-{% for article in articles %}
-<h2>{{ article.name }}</h2>
-<div>{{ article.price }}</div>
-<div>{{ article.madein }}</div>
-<div><img src="/images/{{article.photo}}" style="width:200px; height:200px;"></div>
-<hr>
-{% endfor %}
+    <h1>Products List</h1>
+    <div class="products-grid">
+        {% for article in articles %}
+            <div class="product-card">
+                <img src="/images/{{ article.photo }}" alt="{{ article.name }}">
+                <div class="product-card-content">
+                    <h2>{{ article.name }}</h2>
+                    <div>Price: {{ article.price }}€</div>
+                    <div>Made in: {{ article.madein }}</div>
+                    <button class="btn"><a href="{{ path('app_add', {'id': article.id}) }}">Add to Cart</a></button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
