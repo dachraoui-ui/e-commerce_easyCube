@@ -42,6 +42,7 @@ security:
         - { path: '^/produit', roles: ROLE_ADMIN }
         - { path: '^/produit/add', roles: ROLE_ADMIN }
         - { path: '^/remove', roles: ROLE_ADMIN }
+        - { path: '^/contact', roles: PUBLIC_ACCESS}
         
 
 
