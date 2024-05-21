@@ -59,7 +59,7 @@ class CartController extends AbstractController
             $panier[$id]--;
         if ($panier[$id] <= 0)
             unset($panier[$id]);
-
+        
         $session->set('panier', $panier);
         return $this->redirectToRoute('cart');
     }

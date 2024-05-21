@@ -39,9 +39,9 @@ security:
         - { path: '^/register', roles: PUBLIC_ACCESS }
         - { path: '^/index', roles: ROLE_USER }
         - { path: '^/cart', roles: ROLE_USER }
+        - { path: '^/remove', roles: ROLE_USER }
         - { path: '^/produit', roles: ROLE_ADMIN }
         - { path: '^/produit/add', roles: ROLE_ADMIN }
-        - { path: '^/remove', roles: ROLE_ADMIN }
         - { path: '^/contact', roles: PUBLIC_ACCESS}
         
 
